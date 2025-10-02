@@ -66,3 +66,11 @@
     <script src="../js/simple-reply.js"></script>
 </body>
 </html>
+<script>
+// Отладочный код - проверяем data-атрибуты
+console.log('=== ПРОВЕРКА DATA-АТРИБУТОВ ===');
+document.querySelectorAll('.thread, .reply').forEach((element, index) => {
+    const id = element.getAttribute('data-thread-id');
+    console.log(`Элемент ${index}:`, id, element);
+});
+</script>
