@@ -3,9 +3,74 @@
 <head>
     <title>Ответить на тред | Rootchan</title>
     <link rel="stylesheet" href="./css/style.css">
+    <style>
+        /* Стили шапки встроенные */
+        .rootchan-header {
+            background: #0d0d0d;
+            border-bottom: 1px solid #00ff00;
+            padding: 15px 0;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 20px;
+        }
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .logo {
+            color: #00ff00;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .main-nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .main-nav a:hover {
+            color: #00ff00;
+        }
+        .boards-nav {
+            border-top: 1px solid #333;
+            padding-top: 10px;
+        }
+        .boards-nav a {
+            color: #888;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 14px;
+        }
+        .boards-nav a:hover {
+            color: #00ff00;
+        }
+    </style>
 </head>
 <body>
-    <!-- Шапка вставится автоматически -->
+    <!-- ШАПКА ВСТРОЕННАЯ -->
+    <header class="rootchan-header">
+        <div class="header-content">
+            <div class="header-top">
+                <a href="./index.html" class="logo">Rootchan</a>
+                <nav class="main-nav">
+                    <a href="./submit.html">Предложить тред</a>
+                    <a href="./rules.html">Правила</a>
+                </nav>
+            </div>
+            <nav class="boards-nav">
+                <a href="./boards/b.html">/b/ - Флудилка</a>
+                <a href="./boards/vg.html">/vg/ - Игры</a>
+                <a href="./boards/a.html">/a/ - Аниме</a>
+                <a href="./boards/hw.html">/hw/ - Учеба</a>
+            </nav>
+        </div>
+    </header>
     
     <div class="content">
         <h1>▶ Ответить на тред</h1>
@@ -18,6 +83,7 @@
                 <div class="form-group">
                     <label for="thread-id">ID треда:</label>
                     <input type="text" id="thread-id" name="thread_id" readonly style="background: #333; color: #00ff00; font-weight: bold;">
+                    <small>Это ID треда, в который вы отвечаете</small>
                 </div>
                 
                 <div class="form-group">
@@ -43,42 +109,26 @@
                 <li>Модератор проверяет и добавляет его на сайт вручную</li>
                 <li>Ответ появляется в течение 24 часов</li>
             </ol>
-            
-            <div class="thread" style="margin-top: 20px;">
-                <h3>💡 Пример как будет выглядеть ваш ответ:</h3>
-                <div class="reply">
-                    <div class="reply-meta">
-                        <span class="anonymous">Аноним</span> • <span id="example-date"></span> • ID: #999
-                    </div>
-                    <div class="reply-text" id="example-text">
-                        Ваш текст появится здесь...
-                    </div>
-                    <button class="reply-btn">Ответить</button>
-                </div>
-            </div>
         </div>
     </div>
 
-    <script src="./js/header-loader.js"></script>
-    
     <script>
         // Получаем данные из URL
         const urlParams = new URLSearchParams(window.location.search);
         const threadId = urlParams.get('thread') || '#unknown';
         const replyText = urlParams.get('text') || '';
         
+        console.log('URL Parameters:', { threadId, replyText });
+        
         // Заполняем форму
         document.getElementById('thread-id').value = threadId;
         document.getElementById('reply-text').value = replyText;
         document.getElementById('subject-field').value = `ОТВЕТ на тред ${threadId}`;
         
-        // Показываем пример
-        document.getElementById('example-text').textContent = replyText || 'Ваш текст появится здесь...';
-        
-        // Текущая дата для примера
-        const now = new Date();
-        document.getElementById('example-date').textContent = 
-            `${now.getDate().toString().padStart(2, '0')}.${(now.getMonth()+1).toString().padStart(2, '0')}.${now.getFullYear()} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+        // Если все равно unknown - покажем alert для отладки
+        if (threadId === '#unknown') {
+            alert('Ошибка: ID треда не передан. Полученные параметры: ' + window.location.search);
+        }
     </script>
 </body>
 </html>
