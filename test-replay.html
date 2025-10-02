@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тест ответа | Rootchan</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="content">
+        <h1>Тест передачи параметров</h1>
+        
+        <p>Простая ссылка: 
+            <a href="./submit-reply.html?thread=#999&text=test">submit-reply.html?thread=#999&text=test</a>
+        </p>
+        
+        <p>Открыть консоль (F12) и нажать на ссылку выше</p>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        console.log('Тест - параметры этой страницы:', {
+            thread: urlParams.get('thread'),
+            text: urlParams.get('text'),
+            fullSearch: window.location.search
+        });
+    </script>
+</body>
+</html>
