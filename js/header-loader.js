@@ -1,21 +1,12 @@
 // header-loader.js - Умный загрузчик шапки для Rootchan
 class HeaderLoader {
     constructor() {
-        this.headerContainer = null;
         this.maxRetries = 2;
         this.retryCount = 0;
     }
 
     init() {
-        this.createHeaderContainer();
         this.loadHeader();
-    }
-
-    createHeaderContainer() {
-        // Создаем контейнер для шапки в самом начале body
-        this.headerContainer = document.createElement('div');
-        this.headerContainer.id = 'rootchan-header';
-        document.body.insertBefore(this.headerContainer, document.body.firstChild);
     }
 
     async loadHeader() {
@@ -27,7 +18,13 @@ class HeaderLoader {
             }
             
             const html = await response.text();
-            this.headerContainer.innerHTML = html;
+            
+            // Создаем контейнер и вставляем шапку ПЕРЕД всем контентом
+            const headerContainer = document.createElement('div');
+            headerContainer.id = 'rootchan-header';
+            headerContainer.innerHTML = html;
+            document.body.insertBefore(headerContainer, document.body.firstChild);
+            
             console.log('Rootchan header loaded successfully');
             
         } catch (error) {
@@ -48,7 +45,10 @@ class HeaderLoader {
 
     showFallbackHeader() {
         console.log('Showing fallback header');
-        this.headerContainer.innerHTML = this.getFallbackHeader();
+        const headerContainer = document.createElement('div');
+        headerContainer.id = 'rootchan-header';
+        headerContainer.innerHTML = this.getFallbackHeader();
+        document.body.insertBefore(headerContainer, document.body.firstChild);
     }
 
     getFallbackHeader() {
@@ -123,11 +123,7 @@ class HeaderLoader {
     }
 }
 
-// Автоматическая инициализация когда DOM готов
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        new HeaderLoader().init();
-    });
-} else {
+// Автоматическая инициализация
+document.addEventListener('DOMContentLoaded', () => {
     new HeaderLoader().init();
-}
+});
