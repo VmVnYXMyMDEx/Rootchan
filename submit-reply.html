@@ -2,25 +2,33 @@
 <html>
 <head>
     <title>Ответить на тред | Rootchan</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <!-- Шапка вставится автоматически -->
+    
     <div class="content">
         <h1>▶ Ответить на тред</h1>
         
         <div class="submit-form">
             <form action="https://formsubmit.co/ВАШ_EMAIL@gmail.com" method="POST">
-                <input type="hidden" name="_next" value="../thanks.html">
+                <input type="hidden" name="_next" value="./thanks.html">
                 <input type="hidden" name="_subject" id="subject-field">
                 
                 <div class="form-group">
-                    <label>ID треда:</label>
-                    <input type="text" id="thread-id" readonly style="background: #333; color: #888;">
+                    <label for="thread-id">ID треда:</label>
+                    <input type="text" id="thread-id" name="thread_id" readonly style="background: #333; color: #00ff00; font-weight: bold;">
                 </div>
                 
                 <div class="form-group">
-                    <label>Текст ответа:</label>
-                    <textarea id="reply-text" name="reply_text" rows="8" readonly style="background: #333; color: #888;"></textarea>
+                    <label for="reply-text">Текст ответа:</label>
+                    <textarea id="reply-text" name="reply_text" rows="8" readonly style="background: #333; color: #ccc;"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Пароль (для удаления):</label>
+                    <input type="password" id="password" name="password" placeholder="Опционально">
+                    <small>Если забудете пароль, не сможете удалить ответ</small>
                 </div>
                 
                 <button type="submit">✅ Отправить ответ на модерацию</button>
@@ -28,26 +36,49 @@
         </div>
         
         <div class="rules-preview">
-            <p><strong>Как это работает:</strong></p>
+            <h3>📋 Как это работает:</h3>
             <ol>
                 <li>Вы написали ответ выше</li>
-                <li>Нажимаете "Отправить" → ответ приходит мне на почту</li>
-                <li>Я проверяю и добавляю его на сайт вручную</li>
+                <li>Нажимаете "Отправить" → ответ приходит модератору на почту</li>
+                <li>Модератор проверяет и добавляет его на сайт вручную</li>
                 <li>Ответ появляется в течение 24 часов</li>
             </ol>
+            
+            <div class="thread" style="margin-top: 20px;">
+                <h3>💡 Пример как будет выглядеть ваш ответ:</h3>
+                <div class="reply">
+                    <div class="reply-meta">
+                        <span class="anonymous">Аноним</span> • <span id="example-date"></span> • ID: #999
+                    </div>
+                    <div class="reply-text" id="example-text">
+                        Ваш текст появится здесь...
+                    </div>
+                    <button class="reply-btn">Ответить</button>
+                </div>
+            </div>
         </div>
     </div>
 
+    <script src="./js/header-loader.js"></script>
+    
     <script>
         // Получаем данные из URL
         const urlParams = new URLSearchParams(window.location.search);
-        const threadId = urlParams.get('thread') || 'unknown';
+        const threadId = urlParams.get('thread') || '#unknown';
         const replyText = urlParams.get('text') || '';
         
         // Заполняем форму
         document.getElementById('thread-id').value = threadId;
         document.getElementById('reply-text').value = replyText;
-        document.getElementById('subject-field').value = `ОТВЕТ на ${threadId}`;
+        document.getElementById('subject-field').value = `ОТВЕТ на тред ${threadId}`;
+        
+        // Показываем пример
+        document.getElementById('example-text').textContent = replyText || 'Ваш текст появится здесь...';
+        
+        // Текущая дата для примера
+        const now = new Date();
+        document.getElementById('example-date').textContent = 
+            `${now.getDate().toString().padStart(2, '0')}.${(now.getMonth()+1).toString().padStart(2, '0')}.${now.getFullYear()} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
     </script>
 </body>
 </html>
