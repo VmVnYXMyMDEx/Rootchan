@@ -1,4 +1,4 @@
-// Простой скрипт для ответов - ФИНАЛЬНАЯ ВЕРСИЯ
+// Исправленный скрипт для ответов
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Reply system loaded');
     
@@ -7,19 +7,19 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Reply button clicked');
             
             // Находим ближайший тред или ответ
-            const thread = e.target.closest('.thread, .reply');
+            const thread = e.target.closest('[data-thread-id]');
             
             if (!thread) {
-                console.log('Thread not found');
+                alert('Ошибка: не найден тред для ответа');
                 return;
             }
             
-            // Ищем data-thread-id
+            // Берем ID из data-атрибута
             const threadId = thread.getAttribute('data-thread-id');
             console.log('Thread ID from attribute:', threadId);
             
             if (!threadId) {
-                alert('Ошибка: ID треда не найден');
+                alert('Ошибка: ID треда не найден в data-атрибуте');
                 return;
             }
             
@@ -27,9 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const replyText = prompt('Введите ваш ответ:');
             
             if (replyText && replyText.trim() !== '') {
-                // Переходим на страницу ответа
+                // Формируем URL с параметрами
                 const url = `../submit-reply.html?thread=#${threadId}&text=${encodeURIComponent(replyText)}`;
-                console.log('Redirecting to:', url);
+                console.log('Redirecting to URL:', url);
+                
+                // Переходим на страницу ответа
                 window.location.href = url;
             }
         }
