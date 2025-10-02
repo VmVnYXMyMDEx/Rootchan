@@ -1,12 +1,64 @@
-<form action="https://formsubmit.co/your-email@gmail.com" method="POST">
-  <input type="hidden" name="_next" value="https://your-username.github.io/thanks.html">
-  <input type="hidden" name="_subject" value="Новый тред на Rootchan!">
-  
-  <input type="text" name="thread_title" placeholder="Название треда" required>
-  <textarea name="thread_text" placeholder="Текст треда" required></textarea>
-  <select name="board">
-    <option value="/b/">/b/ - Флудилка</option>
-    <option value="/vg/">/vg/ - Игры</option>
-  </select>
-  <button type="submit">Предложить тред</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Предложить тред | Rootchan</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- Шапка вставится автоматически -->
+    
+    <div class="content">
+        <h1>▶ Предложить тред</h1>
+        
+        <div class="submit-form">
+            <form action="https://formsubmit.co/your-email@gmail.com" method="POST">
+                <input type="hidden" name="_next" value="./thanks.html">
+                <input type="hidden" name="_subject" value="Новый тред на Rootchan!">
+                
+                <div class="form-group">
+                    <label for="board">Выберите раздел:</label>
+                    <select id="board" name="board" required>
+                        <option value="">-- Выберите раздел --</option>
+                        <option value="/b/">/b/ - Флудилка</option>
+                        <option value="/vg/">/vg/ - Игры</option>
+                        <option value="/a/">/a/ - Аниме</option>
+                        <option value="/hw/">/hw/ - Учеба</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="title">Название треда:</label>
+                    <input type="text" id="title" name="title" placeholder="Введите название..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="text">Текст треда:</label>
+                    <textarea id="text" name="text" rows="8" placeholder="Напишите ваш тред здесь..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Пароль (для удаления):</label>
+                    <input type="password" id="password" name="password" placeholder="Опционально">
+                    <small>Если забудете пароль, не сможете удалить тред</small>
+                </div>
+                
+                <button type="submit">Отправить на модерацию</button>
+            </form>
+        </div>
+        
+        <div class="rules-preview">
+            <h3>📋 Правила перед отправкой:</h3>
+            <ul>
+                <li>❌ Без оскорблений и угроз</li>
+                <li>❌ Без запрещенного контента</li>
+                <li>❌ Без спама и флуда</li>
+                <li>✅ Только темы связанные с разделом</li>
+                <li>✅ Анонимность гарантирована</li>
+            </ul>
+            <p><em>Все треды проходят премодерацию. Это может занять до 24 часов.</em></p>
+        </div>
+    </div>
+
+    <script src="./js/header-loader.js"></script>
+</body>
+</html>
