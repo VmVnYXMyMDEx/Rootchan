@@ -4,7 +4,7 @@
     <title>Ответить на тред | Rootchan</title>
     <link rel="stylesheet" href="./css/style.css">
     <style>
-        /* Стили шапки встроенные */
+        /* Стили шапки */
         .rootchan-header {
             background: #0d0d0d;
             border-bottom: 1px solid #00ff00;
@@ -53,7 +53,7 @@
     </style>
 </head>
 <body>
-    <!-- ШАПКА ВСТРОЕННАЯ -->
+    <!-- ШАПКА -->
     <header class="rootchan-header">
         <div class="header-content">
             <div class="header-top">
@@ -73,22 +73,17 @@
     </header>
     
     <div class="content">
-        <h1>▶ Ответить на тред</h1>
+        <h1>▶ Ответить на тред <span id="thread-id-display"></span></h1>
         
         <div class="submit-form">
             <form action="https://formsubmit.co/ВАШ_EMAIL@gmail.com" method="POST">
                 <input type="hidden" name="_next" value="./thanks.html">
                 <input type="hidden" name="_subject" id="subject-field">
-                
-                <div class="form-group">
-                    <label for="thread-id">ID треда:</label>
-                    <input type="text" id="thread-id" name="thread_id" readonly style="background: #333; color: #00ff00; font-weight: bold;">
-                    <small>Это ID треда, в который вы отвечаете</small>
-                </div>
+                <input type="hidden" name="thread_id" id="thread-id-field">
                 
                 <div class="form-group">
                     <label for="reply-text">Текст ответа:</label>
-                    <textarea id="reply-text" name="reply_text" rows="8" readonly style="background: #333; color: #ccc;"></textarea>
+                    <textarea id="reply-text" name="reply_text" rows="8" placeholder="Введите ваш ответ здесь..." required></textarea>
                 </div>
                 
                 <div class="form-group">
@@ -100,39 +95,22 @@
                 <button type="submit">✅ Отправить ответ на модерацию</button>
             </form>
         </div>
-        
-        <div class="rules-preview">
-            <h3>📋 Как это работает:</h3>
-            <ol>
-                <li>Вы написали ответ выше</li>
-                <li>Нажимаете "Отправить" → ответ приходит модератору на почту</li>
-                <li>Модератор проверяет и добавляет его на сайт вручную</li>
-                <li>Ответ появляется в течение 24 часов</li>
-            </ol>
-        </div>
     </div>
 
     <script>
-        // Получаем данные из Local Storage
-        const threadId = localStorage.getItem('rootchan_thread_id') || '#unknown';
-        const replyText = localStorage.getItem('rootchan_reply_text') || '';
-
-        console.log('Loaded from localStorage:', { threadId, replyText });
-
+        // Получаем ID треда из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const threadId = urlParams.get('thread') || '#unknown';
+        
+        console.log('Thread ID from URL:', threadId);
+        
         // Заполняем форму
-        document.getElementById('thread-id').value = threadId;
-        document.getElementById('reply-text').value = replyText;
+        document.getElementById('thread-id-display').textContent = threadId;
+        document.getElementById('thread-id-field').value = threadId;
         document.getElementById('subject-field').value = `ОТВЕТ на тред ${threadId}`;
-
-        // Очищаем storage после использования
-        localStorage.removeItem('rootchan_thread_id');
-        localStorage.removeItem('rootchan_reply_text');
-
-        // Если все равно unknown - покажем отладочную информацию
-        if (threadId === '#unknown') {
-            console.error('No data in localStorage');
-            document.body.innerHTML += '<div style="color:red; padding:20px; background:#300">Ошибка: данные не передались. Попробуйте еще раз.</div>';
-        }
+        
+        // Фокус на текстовое поле
+        document.getElementById('reply-text').focus();
     </script>
 </body>
 </html>
