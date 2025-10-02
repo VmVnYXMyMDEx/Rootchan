@@ -4,10 +4,29 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target.classList.contains('reply-btn')) {
             const thread = e.target.closest('.thread, .reply');
             
-            // Находим ID (ищем текст с #)
-            const metaText = thread.querySelector('small')?.textContent || '';
-            const idMatch = metaText.match(/#(\d+)/);
-            const threadId = idMatch ? idMatch[0] : '#unknown';
+            // Ищем ID разными способами
+            let threadId = '#unknown';
+            
+            // Способ 1: Ищем текст с # в small тегах
+            const smallElements = thread.querySelectorAll('small');
+            for (let small of smallElements) {
+                const idMatch = small.textContent.match(/#(\d+)/);
+                if (idMatch) {
+                    threadId = idMatch[0];
+                    break;
+                }
+            }
+            
+            // Способ 2: Если не нашли, пробуем найти в любом тексте
+            if (threadId === '#unknown') {
+                const text = thread.textContent;
+                const idMatch = text.match(/#(\d+)/);
+                if (idMatch) {
+                    threadId = idMatch[0];
+                }
+            }
+            
+            console.log('Found thread ID:', threadId); // Для отладки
             
             // Спросить у пользователя текст ответа
             const replyText = prompt('Введите ваш ответ:');
