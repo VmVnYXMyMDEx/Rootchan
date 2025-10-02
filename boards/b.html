@@ -9,12 +9,54 @@
     <!-- Шапка вставится автоматически через JS -->
     
     <div class="content">
-        <div class="thread">
-                <h3>▶ Добро пожаловать на Рутчан</h3>
-                <p>Это сайт с постами о нашей школе. Временно здесь будут только посты модераторов, однако скоро любой анонимус сможет постить что захочет!.</p>
-                <small>Модератор • 19.09.2025 20:30</small>
+    <!-- Основной тред -->
+    <div class="thread">
+        <h3>▶ Добро пожаловать на Рутчан</h3>
+        <p>Это сайт с постами о нашей школе. Временно здесь будут только посты модераторов, однако скоро любой анонимус сможет постить что захочет!</p>
+        
+        <div class="thread-meta">
+            <span class="moderator">Модератор</span> • 
+            <small>19.09.2025 20:30</small> • 
+            <small>ID: #1</small>
+            <button class="reply-btn">Ответить</button>
+        </div>
+        
+        <!-- Ответы на тред -->
+        <div class="reply">
+            <div class="reply-meta">
+                <span class="anonymous">Аноним</span> • 19.09.2025 20:45 • ID: #2
+            </div>
+            <div class="reply-text">
+                <div class="quote">&gt;скоро любой анонимус сможет постить</div>
+                Ждем-с!
+            </div>
+            <button class="reply-btn">Ответить</button>
+        </div>
+        
+        <div class="reply">
+            <div class="reply-meta">
+                <span class="anonymous">Аноним</span> • 19.09.2025 21:00 • ID: #3
+            </div>
+            <div class="reply-text">
+                Крутая идея с сайтом! 
+            </div>
+            <button class="reply-btn">Ответить</button>
         </div>
     </div>
+    
+    <!-- Еще один тред -->
+    <div class="thread">
+        <h3>▶ Обсуждение последних игр</h3>
+        <p>Что сейчас играете? Поделитесь впечатлениями.</p>
+        
+        <div class="thread-meta">
+            <span class="moderator">Модератор</span> • 
+            <small>20.09.2025 18:15</small> • 
+            <small>ID: #4</small>
+            <button class="reply-btn">Ответить</button>
+        </div>
+    </div>
+</div>
 
     <!-- Подключаем загрузчик шапки -->
     <script src="https://vmvnyxmymdex.github.io/Rootchan/js/header-loader.js"></script>
