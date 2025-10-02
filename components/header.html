@@ -1,139 +1,74 @@
-<header class="site-header">
-    <div class="header-container">
-        <!-- Логотип и название сайта -->
-        <div class="header-brand">
-            <a href="/index.html" class="logo-link">
-                <div class="logo-symbol">R></div>
-                <span class="site-name">Rootchan</span>
-            </a>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rootchan - Анонимный форум</title>
+    <style>
+        /* СТИЛИ ШАПКИ */
+        .rootchan-header {
+            background: #0d0d0d;
+            border-bottom: 1px solid #00ff00;
+            padding: 15px 0;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 20px;
+        }
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .logo {
+            color: #00ff00;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .main-nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .main-nav a:hover {
+            color: #00ff00;
+        }
+        .boards-nav {
+            border-top: 1px solid #333;
+            padding-top: 10px;
+        }
+        .boards-nav a {
+            color: #888;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 14px;
+        }
+        .boards-nav a:hover {
+            color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <!-- ШАПКА -->
+    <header class="rootchan-header">
+        <div class="header-content">
+            <div class="header-top">
+                <a href="/index.html" class="logo">Rootchan</a>
+                <nav class="main-nav">
+                    <a href="/submit.html">Предложить тред</a>
+                    <a href="/rules.html">Правила</a>
+                </nav>
+            </div>
+            <nav class="boards-nav">
+                <a href="/boards/b.html">/b/ - Флудилка</a>
+                <a href="/boards/vg.html">/vg/ - Игры</a>
+                <a href="/boards/a.html">/a/ - Аниме</a>
+                <a href="/boards/hw.html">/hw/ - Учеба</a>
+            </nav>
         </div>
-
-        <!-- Навигационное меню -->
-        <nav class="header-nav">
-            <a href="/index.html" class="nav-link">Главная</a>
-            <a href="/submit.html" class="nav-link">Предложить тред</a>
-            <a href="/rules.html" class="nav-link">Правила</a>
-        </nav>
-
-        <!-- Быстрый доступ к доскам -->
-        <div class="board-links">
-            <span class="boards-label">Доски:</span>
-            <a href="/boards/b.html" class="board-link">/b/</a>
-            <a href="/boards/vg.html" class="board-link">/vg/</a>
-            <a href="/boards/a.html" class="board-link">/a/</a>
-            <a href="/boards/hw.html" class="board-link">/hw/</a>
-        </div>
-    </div>
-</header>
-
-<style>
-    /* Стили для шапки */
-    .site-header {
-        background: #1a1a1a;
-        border-bottom: 2px solid #333;
-        padding: 1rem 0;
-        font-family: 'Courier New', monospace;
-        font-size: 0.9rem;
-    }
-
-    .header-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    /* Логотип */
-    .logo-link {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        text-decoration: none;
-        color: #00ff00; /* Зеленый терминальный цвет */
-        font-weight: bold;
-    }
-
-    .logo-symbol {
-        background: #00ff00;
-        color: #000;
-        width: 24px;
-        height: 24px;
-        border-radius: 3px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 0.8rem;
-    }
-
-    .site-name {
-        font-size: 1.2rem;
-    }
-
-    /* Основная навигация */
-    .header-nav {
-        display: flex;
-        gap: 1.5rem;
-    }
-
-    .nav-link {
-        color: #ccc;
-        text-decoration: none;
-        padding: 0.3rem 0.6rem;
-        border-radius: 3px;
-        transition: all 0.2s ease;
-    }
-
-    .nav-link:hover {
-        color: #00ff00;
-        background: #333;
-    }
-
-    /* Ссылки на доски */
-    .board-links {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: #666;
-    }
-
-    .boards-label {
-        font-size: 0.8rem;
-        margin-right: 0.3rem;
-    }
-
-    .board-link {
-        color: #888;
-        text-decoration: none;
-        padding: 0.2rem 0.4rem;
-        border-radius: 2px;
-        transition: all 0.2s ease;
-    }
-
-    .board-link:hover {
-        color: #00ff00;
-        background: #333;
-    }
-
-    /* Адаптивность для мобилок */
-    @media (max-width: 768px) {
-        .header-container {
-            flex-direction: column;
-            text-align: center;
-            gap: 0.8rem;
-        }
-        
-        .header-nav {
-            order: 3;
-            gap: 1rem;
-        }
-        
-        .board-links {
-            order: 2;
-        }
-    }
-</style>
+    </header>
+</body>
+</html>
