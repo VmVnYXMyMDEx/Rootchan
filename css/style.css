@@ -258,3 +258,24 @@ button:hover {
 .rules-preview em {
     color: #666;
 }
+
+/* Стиль для ссылок-кнопок */
+a.reply-btn {
+    display: inline-block;
+    background: #333;
+    color: #ccc;
+    border: 1px solid #00ff00;
+    padding: 4px 8px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+a.reply-btn:hover {
+    background: #00ff00;
+    color: #000;
+    text-decoration: none;
+}
