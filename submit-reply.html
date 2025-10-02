@@ -113,21 +113,25 @@
     </div>
 
     <script>
-        // Получаем данные из URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const threadId = urlParams.get('thread') || '#unknown';
-        const replyText = urlParams.get('text') || '';
-        
-        console.log('URL Parameters:', { threadId, replyText });
-        
+        // Получаем данные из Local Storage
+        const threadId = localStorage.getItem('rootchan_thread_id') || '#unknown';
+        const replyText = localStorage.getItem('rootchan_reply_text') || '';
+
+        console.log('Loaded from localStorage:', { threadId, replyText });
+
         // Заполняем форму
         document.getElementById('thread-id').value = threadId;
         document.getElementById('reply-text').value = replyText;
         document.getElementById('subject-field').value = `ОТВЕТ на тред ${threadId}`;
-        
-        // Если все равно unknown - покажем alert для отладки
+
+        // Очищаем storage после использования
+        localStorage.removeItem('rootchan_thread_id');
+        localStorage.removeItem('rootchan_reply_text');
+
+        // Если все равно unknown - покажем отладочную информацию
         if (threadId === '#unknown') {
-            alert('Ошибка: ID треда не передан. Полученные параметры: ' + window.location.search);
+            console.error('No data in localStorage');
+            document.body.innerHTML += '<div style="color:red; padding:20px; background:#300">Ошибка: данные не передались. Попробуйте еще раз.</div>';
         }
     </script>
 </body>
