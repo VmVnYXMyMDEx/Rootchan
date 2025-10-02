@@ -10,8 +10,13 @@ class HeaderLoader {
     }
 
     async loadHeader() {
+        // === ИЗМЕНЕНИЕ ЗДЕСЬ ===
+        const isInBoardsFolder = window.location.pathname.includes('/boards/');
+        const basePath = isInBoardsFolder ? '../' : './';
+        
         try {
-            const response = await fetch('/components/header.html');
+            const response = await fetch(basePath + 'components/header.html');
+            // === КОНЕЦ ИЗМЕНЕНИЯ ===
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -45,13 +50,19 @@ class HeaderLoader {
 
     showFallbackHeader() {
         console.log('Showing fallback header');
+        
+        // === ТАКЖЕ ДОБАВЬТЕ СЮДА ===
+        const isInBoardsFolder = window.location.pathname.includes('/boards/');
+        const basePath = isInBoardsFolder ? '../' : './';
+        // === КОНЕЦ ДОБАВЛЕНИЯ ===
+        
         const headerContainer = document.createElement('div');
         headerContainer.id = 'rootchan-header';
-        headerContainer.innerHTML = this.getFallbackHeader();
+        headerContainer.innerHTML = this.getFallbackHeader(basePath);
         document.body.insertBefore(headerContainer, document.body.firstChild);
     }
 
-    getFallbackHeader() {
+    getFallbackHeader(basePath) {
         return `
 <!-- Fallback Header -->
 <style>
@@ -105,17 +116,17 @@ class HeaderLoader {
 <div class="rootchan-header">
     <div class="header-content">
         <div class="header-top">
-            <a href="/index.html" class="logo">Rootchan</a>
+            <a href="${basePath}index.html" class="logo">Rootchan</a>
             <nav class="main-nav">
-                <a href="/submit.html">Предложить тред</a>
-                <a href="/rules.html">Правила</a>
+                <a href="${basePath}submit.html">Предложить тред</a>
+                <a href="${basePath}rules.html">Правила</a>
             </nav>
         </div>
         <nav class="boards-nav">
-            <a href="/boards/b.html">/b/ - Флудилка</a>
-            <a href="/boards/vg.html">/vg/ - Игры</a>
-            <a href="/boards/a.html">/a/ - Аниме</a>
-            <a href="/boards/hw.html">/hw/ - Учеба</a>
+            <a href="${basePath}boards/b.html">/b/ - Флудилка</a>
+            <a href="${basePath}boards/vg.html">/vg/ - Игры</a>
+            <a href="${basePath}boards/a.html">/a/ - Аниме</a>
+            <a href="${basePath}boards/hw.html">/hw/ - Учеба</a>
         </nav>
     </div>
 </div>
