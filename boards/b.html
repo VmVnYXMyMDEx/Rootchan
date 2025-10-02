@@ -8,58 +8,40 @@
     <!-- Шапка вставится автоматически через JS -->
     
     <div class="content">
-        <!-- Основной тред -->
-        <div class="thread">
-            <h3>▶ Добро пожаловать на Рутчан</h3>
-            <p>Это сайт с постами о нашей школе. Временно здесь будут только посты модераторов, однако скоро любой анонимус сможет постить что захочет!</p>
-            
-            <div class="thread" data-thread-id="2">
-                <h3>▶ Добро пожаловать на Рутчан</h3>
-                <p>Это сайт с постами о нашей школе...</p>
-                <div class="thread-meta">
-                    <span class="moderator">Модератор</span> • 
-                    <small>19.09.2025 20:30</small> • 
-                    <small>ID: #2</small>
-                    <a href="../submit-reply.html?thread=#2" class="reply-btn">Ответить</a>
-                </div>
-            
-            <!-- Ответ 1 -->
-            <div class="reply" data-thread-id="3">
-                <div class="reply-meta">
-                    <span class="anonymous">Аноним</span> • 19.09.2025 20:45 • 
-                    <small>ID: #3</small>
-                    <a href="../submit-reply.html?thread=#3" class="reply-btn">Ответить</a>
-                </div>
-                <div class="reply-text">
-                    <div class="quote">&gt;скоро любой анонимус сможет постить</div>
-                    Ждем-с!
-                </div>
-            </div>
-            
-            <div class="reply" data-thread-id="4">
-                <div class="reply-meta">
-                    <span class="anonymous">Аноним</span> • 19.09.2025 21:00 • ID: #4
-                </div>
-                <div class="reply-text">
-                    Крутая идея с сайтом! 
-                </div>
-                <a href="../submit-reply.html?thread=#4" class="reply-btn">Ответить</a>
-            </div>
-        </div>
+        <!-- ПЕРВЫЙ ТРЕД -->
+<div class="thread" data-thread-id="1">
+    <h3>▶ Добро пожаловать на Рутчан</h3>
+    <p>Это сайт с постами о нашей школе...</p>
+    <div class="thread-meta">
+        <span class="moderator">Модератор</span> • 
+        <small>19.09.2025 20:30</small> • 
+        <small>ID: #1</small>
         
-        <!-- Еще один тред -->
-        <div class="thread">
-            <h3>▶ Обсуждение последних игр</h3>
-            <p>Что сейчас играете? Поделитесь впечатлениями.</p>
+        <!-- ФОРМА ОТВЕТА -->
+        <form action="../submit-reply.html" method="GET" style="display: inline;">
+            <input type="hidden" name="thread" value="#1">
+            <button type="submit" class="reply-btn">Ответить</button>
+        </form>
+    </div>
+    
+    <!-- ОТВЕТ 1 -->
+    <div class="reply" data-thread-id="2">
+        <div class="reply-meta">
+            <span class="anonymous">Аноним</span> • 19.09.2025 20:45 • 
+            <small>ID: #2</small>
             
-            <div class="thread-meta" data-thread-id="5">
-                <span class="moderator">Модератор</span> • 
-                <small>20.09.2025 18:15</small> • 
-                <small>ID: #5</small>
-                <a href="../submit-reply.html?thread=#5" class="reply-btn">Ответить</a>
-            </div>
+            <!-- ФОРМА ОТВЕТА -->
+            <form action="../submit-reply.html" method="GET" style="display: inline;">
+                <input type="hidden" name="thread" value="#2">
+                <button type="submit" class="reply-btn">Ответить</button>
+            </form>
+        </div>
+        <div class="reply-text">
+            <div class="quote">&gt;скоро любой анонимус сможет постить</div>
+            Ждем-с!
         </div>
     </div>
+</div>
 
     <!-- ПОДКЛЮЧАЕМ СКРИПТЫ -->
     <script src="../js/header-loader.js"></script>
