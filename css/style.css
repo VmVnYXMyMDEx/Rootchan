@@ -66,3 +66,19 @@ body {
     color: #666;
     font-size: 14px;
 }
+
+/* Дополнительные цвета для ролей */
+.admin {
+    color: #ffaa00;
+    font-weight: bold;
+}
+
+.vip {
+    color: #aa00ff;
+    font-weight: bold;
+}
+
+.new-user {
+    color: #00aaff;
+    font-weight: bold;
+}
