@@ -98,19 +98,17 @@
     </div>
 
     <script>
-        // Получаем ID треда из URL
+        // Просто получаем ID из URL
         const urlParams = new URLSearchParams(window.location.search);
         const threadId = urlParams.get('thread') || '#unknown';
-        
-        console.log('Thread ID from URL:', threadId);
-        
+
+        console.log('URL search:', window.location.search);
+        console.log('Thread ID:', threadId);
+
         // Заполняем форму
         document.getElementById('thread-id-display').textContent = threadId;
         document.getElementById('thread-id-field').value = threadId;
         document.getElementById('subject-field').value = `ОТВЕТ на тред ${threadId}`;
-        
-        // Фокус на текстовое поле
-        document.getElementById('reply-text').focus();
     </script>
 </body>
 </html>
