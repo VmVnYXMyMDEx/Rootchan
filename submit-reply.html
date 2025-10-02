@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ответить на тред | Rootchan</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="content">
+        <h1>▶ Ответить на тред</h1>
+        
+        <div class="submit-form">
+            <form action="https://formsubmit.co/ВАШ_EMAIL@gmail.com" method="POST">
+                <input type="hidden" name="_next" value="../thanks.html">
+                <input type="hidden" name="_subject" id="subject-field">
+                
+                <div class="form-group">
+                    <label>ID треда:</label>
+                    <input type="text" id="thread-id" readonly style="background: #333; color: #888;">
+                </div>
+                
+                <div class="form-group">
+                    <label>Текст ответа:</label>
+                    <textarea id="reply-text" name="reply_text" rows="8" readonly style="background: #333; color: #888;"></textarea>
+                </div>
+                
+                <button type="submit">✅ Отправить ответ на модерацию</button>
+            </form>
+        </div>
+        
+        <div class="rules-preview">
+            <p><strong>Как это работает:</strong></p>
+            <ol>
+                <li>Вы написали ответ выше</li>
+                <li>Нажимаете "Отправить" → ответ приходит мне на почту</li>
+                <li>Я проверяю и добавляю его на сайт вручную</li>
+                <li>Ответ появляется в течение 24 часов</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Получаем данные из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const threadId = urlParams.get('thread') || 'unknown';
+        const replyText = urlParams.get('text') || '';
+        
+        // Заполняем форму
+        document.getElementById('thread-id').value = threadId;
+        document.getElementById('reply-text').value = replyText;
+        document.getElementById('subject-field').value = `ОТВЕТ на ${threadId}`;
+    </script>
+</body>
+</html>
