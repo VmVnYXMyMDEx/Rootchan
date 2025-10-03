@@ -1,27 +1,21 @@
-// Максимально простой скрипт - превращает кнопки в ссылки
+// Простой скрипт - пользователь вводит ID вручную
 document.addEventListener('DOMContentLoaded', function() {
-    // Находим все кнопки ответа
-    const replyButtons = document.querySelectorAll('.reply-btn');
-    
-    replyButtons.forEach(button => {
-        // Находим ID треда
-        const threadElement = button.closest('[data-thread-id]');
-        if (!threadElement) return;
-        
-        const threadId = threadElement.getAttribute('data-thread-id');
-        if (!threadId) return;
-        
-        // Заменяем кнопку на ссылку
-        const link = document.createElement('a');
-        link.href = `../submit-reply.html?thread=#${threadId}`;
-        link.className = 'reply-btn';
-        link.textContent = 'Ответить';
-        link.style.display = 'inline-block';
-        link.style.textDecoration = 'none';
-        link.style.color = 'inherit';
-        
-        button.parentNode.replaceChild(link, button);
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('reply-btn')) {
+            // Спрашиваем ID треда
+            const threadId = prompt('Введите ID треда (например: #1, #2):', '#');
+            
+            if (threadId && threadId.trim() !== '' && threadId !== '#') {
+                // Спрашиваем текст ответа
+                const replyText = prompt('Введите ваш ответ:');
+                
+                if (replyText && replyText.trim() !== '') {
+                    // Переходим на страницу ответа
+                    window.location.href = `../submit-reply.html?thread=${encodeURIComponent(threadId)}&text=${encodeURIComponent(replyText)}`;
+                }
+            } else if (threadId && threadId !== '#') {
+                alert('Пожалуйста, введите корректный ID (например: #1)');
+            }
+        }
     });
-    
-    console.log('Converted reply buttons to links');
 });
