@@ -8,44 +8,59 @@
     <!-- Шапка вставится автоматически через JS -->
     
     <div class="content">
-        <!-- ПЕРВЫЙ ТРЕД -->
-<div class="thread" data-thread-id="1">
-    <h3>▶ Добро пожаловать на Рутчан</h3>
-    <p>Это сайт с постами о нашей школе...</p>
-    <div class="thread-meta">
-        <span class="moderator">Модератор</span> • 
-        <small>19.09.2025 20:30</small> • 
-        <small>ID: #1</small>
-        
-        <!-- ФОРМА ОТВЕТА -->
-        <form action="../submit-reply.html" method="GET" style="display: inline;">
-            <input type="hidden" name="thread" value="#1">
-            <button type="submit" class="reply-btn">Ответить</button>
-        </form>
-    </div>
-    
-    <!-- ОТВЕТ 1 -->
-    <div class="reply" data-thread-id="2">
-        <div class="reply-meta">
-            <span class="anonymous">Аноним</span> • 19.09.2025 20:45 • 
-            <small>ID: #2</small>
+        <!-- Основной тред -->
+        <div class="thread" data-thread-id="1">
+            <h3>▶ Добро пожаловать на Рутчан</h3>
+            <p>Это сайт с постами о нашей школе. Временно здесь будут только посты модераторов, однако скоро любой анонимус сможет постить что захочет!</p>
             
-            <!-- ФОРМА ОТВЕТА -->
-            <form action="../submit-reply.html" method="GET" style="display: inline;">
-                <input type="hidden" name="thread" value="#2">
-                <button type="submit" class="reply-btn">Ответить</button>
-            </form>
+            <div class="thread-meta">
+                <span class="moderator">Модератор</span> • 
+                <small>19.09.2025 20:30</small> • 
+                <small>ID: #1</small>
+                <button class="reply-btn" type="button">Ответить</button>
+            </div>
+            
+            <!-- Ответы на тред -->
+            <div class="reply" data-thread-id="2">
+                <div class="reply-meta">
+                    <span class="anonymous">Аноним</span> • 19.09.2025 20:45 • 
+                    <small>ID: #2</small>
+                    <button class="reply-btn" type="button">Ответить</button>
+                </div>
+                <div class="reply-text">
+                    <div class="quote">&gt;скоро любой анонимус сможет постить</div>
+                    Ждем-с!
+                </div>
+            </div>
+            
+            <div class="reply" data-thread-id="3">
+                <div class="reply-meta">
+                    <span class="anonymous">Аноним</span> • 19.09.2025 21:00 • 
+                    <small>ID: #3</small>
+                    <button class="reply-btn" type="button">Ответить</button>
+                </div>
+                <div class="reply-text">
+                    Крутая идея с сайтом! 
+                </div>
+            </div>
         </div>
-        <div class="reply-text">
-            <div class="quote">&gt;скоро любой анонимус сможет постить</div>
-            Ждем-с!
+        
+        <!-- Еще один тред -->
+        <div class="thread" data-thread-id="4">
+            <h3>▶ Обсуждение последних игр</h3>
+            <p>Что сейчас играете? Поделитесь впечатлениями.</p>
+            
+            <div class="thread-meta">
+                <span class="moderator">Модератор</span> • 
+                <small>20.09.2025 18:15</small> • 
+                <small>ID: #4</small>
+                <button class="reply-btn" type="button">Ответить</button>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- ПОДКЛЮЧАЕМ СКРИПТЫ -->
     <script src="../js/header-loader.js"></script>
     <script src="../js/simple-reply.js"></script>
 </body>
 </html>
-<script>
