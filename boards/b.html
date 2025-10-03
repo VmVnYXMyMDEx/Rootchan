@@ -46,18 +46,6 @@
     <!-- ПОДКЛЮЧАЕМ СКРИПТЫ -->
     <script src="../js/header-loader.js"></script>
     <script src="../js/simple-reply.js"></script>
-    <script>
-        // Проверка URL при клике
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('reply-btn')) {
-                const thread = e.target.closest('[data-thread-id]');
-                const threadId = thread ? thread.getAttribute('data-thread-id') : 'unknown';
-                const url = `../submit-reply.html?thread=#${threadId}`;
-                console.log('Would navigate to:', url);
-                alert(`URL: ${url}\nThread ID: ${threadId}`);
-            }
-        });
-    </script>
 </body>
 </html>
 <script>
