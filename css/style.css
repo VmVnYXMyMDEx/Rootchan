@@ -279,3 +279,14 @@ a.reply-btn:hover {
     color: #000;
     text-decoration: none;
 }
+
+/* Стили для быстрой формы ответа */
+.quick-reply-form textarea:focus {
+    border-color: #00ff00;
+    outline: none;
+}
+
+.quick-reply-form button:hover {
+    background: #00ff00 !important;
+    color: #000 !important;
+}
