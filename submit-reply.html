@@ -101,20 +101,29 @@
         </div>
     </div>
 
-<!--    <script>
-        // Простой скрипт - только получает параметры
+    <script>
+        // Получаем параметры из URL
         const urlParams = new URLSearchParams(window.location.search);
         const threadId = urlParams.get('thread') || '#unknown';
-        
-        console.log('URL search:', window.location.search);
-        console.log('Thread ID parameter:', threadId);
-        
-        // Заполняем поле
+
+        console.log('Thread ID from URL:', threadId);
+
+        // Заполняем форму
         document.getElementById('thread-id').value = threadId;
         document.querySelector('input[name="_subject"]').value = `ОТВЕТ на тред ${threadId}`;
-        
-        // Показываем alert для отладки
-        alert(`Полученные параметры: ${window.location.search}\nThread ID: ${threadId}`);
-    </script> -->
+
+        // Обновляем заголовок
+        document.getElementById('thread-id-display').textContent = threadId;
+
+        // Блокируем возможность повторной отправки формы с потерянными параметрами
+        const form = document.querySelector('form[action*="formsubmit.co"]');
+        form.addEventListener('submit', function(e) {
+            const currentThreadId = document.getElementById('thread-id').value;
+            if (currentThreadId === '#unknown') {
+                e.preventDefault();
+                alert('Ошибка: ID треда потерян. Вернитесь на предыдущую страницу и попробуйте снова.');
+            }
+        });
+    </script>
 </body>
 </html>
