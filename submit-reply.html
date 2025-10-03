@@ -73,7 +73,7 @@
     </header>
     
     <div class="content">
-        <h1>▶ Ответить на тред <span id="thread-id-display">#unknown</span></h1>
+        <h1>▶ Отправить ответ</h1>
         
         <div class="submit-form">
             <form action="https://formsubmit.co/ВАШ_EMAIL@gmail.com" method="POST">
@@ -82,7 +82,8 @@
                 
                 <div class="form-group">
                     <label for="thread-id">ID треда:</label>
-                    <input type="text" id="thread-id" name="thread_id" value="#unknown" readonly style="background: #333; color: #00ff00; font-weight: bold;">
+                    <input type="text" id="thread-id" name="thread_id" placeholder="#1, #2, #3..." required>
+                    <small>Укажите ID треда, на который отвечаете</small>
                 </div>
                 
                 <div class="form-group">
@@ -99,31 +100,28 @@
                 <button type="submit">✅ Отправить ответ на модерацию</button>
             </form>
         </div>
+        
+        <div class="rules-preview">
+            <h3>💡 Как найти ID треда?</h3>
+            <p>ID указан рядом с каждым тредом, например: <code>ID: #1</code>, <code>ID: #2</code></p>
+            <p>Просто скопируйте этот номер и вставьте в поле выше.</p>
+        </div>
     </div>
 
     <script>
-        // Получаем параметры из URL
+        // Просто заполняем форму данными из URL (если есть)
         const urlParams = new URLSearchParams(window.location.search);
-        const threadId = urlParams.get('thread') || '#unknown';
-
-        console.log('Thread ID from URL:', threadId);
-
-        // Заполняем форму
-        document.getElementById('thread-id').value = threadId;
-        document.querySelector('input[name="_subject"]').value = `ОТВЕТ на тред ${threadId}`;
-
-        // Обновляем заголовок
-        document.getElementById('thread-id-display').textContent = threadId;
-
-        // Блокируем возможность повторной отправки формы с потерянными параметрами
-        const form = document.querySelector('form[action*="formsubmit.co"]');
-        form.addEventListener('submit', function(e) {
-            const currentThreadId = document.getElementById('thread-id').value;
-            if (currentThreadId === '#unknown') {
-                e.preventDefault();
-                alert('Ошибка: ID треда потерян. Вернитесь на предыдущую страницу и попробуйте снова.');
-            }
-        });
+        const threadId = urlParams.get('thread');
+        const replyText = urlParams.get('text');
+        
+        if (threadId) {
+            document.getElementById('thread-id').value = threadId;
+            document.querySelector('input[name="_subject"]').value = `ОТВЕТ на тред ${threadId}`;
+        }
+        
+        if (replyText) {
+            document.getElementById('reply-text').value = replyText;
+        }
     </script>
 </body>
 </html>
