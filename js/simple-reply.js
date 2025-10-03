@@ -1,20 +1,25 @@
-// Простой скрипт - пользователь вводит ID вручную
+// Самый простой - автоматически определяет ID
 document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('reply-btn')) {
-            // Спрашиваем ID треда
-            const threadId = prompt('Введите ID треда (например: #1, #2):', '#');
+            // Автоматически находим ID треда
+            const thread = e.target.closest('.thread, .reply');
+            let threadId = '#unknown';
             
-            if (threadId && threadId.trim() !== '' && threadId !== '#') {
-                // Спрашиваем текст ответа
-                const replyText = prompt('Введите ваш ответ:');
-                
-                if (replyText && replyText.trim() !== '') {
-                    // Переходим на страницу ответа
-                    window.location.href = `../submit-reply.html?thread=${encodeURIComponent(threadId)}&text=${encodeURIComponent(replyText)}`;
+            if (thread) {
+                // Ищем ID в тексте
+                const idMatch = thread.textContent.match(/ID: (#\d+)/);
+                if (idMatch) {
+                    threadId = idMatch[1];
                 }
-            } else if (threadId && threadId !== '#') {
-                alert('Пожалуйста, введите корректный ID (например: #1)');
+            }
+            
+            // Один prompt только для текста
+            const replyText = prompt(`Ответ на тред ${threadId}\n\nВведите ваш текст ответа:`);
+            
+            if (replyText && replyText.trim() !== '') {
+                // Переходим на страницу ответа
+                window.location.href = `../submit-reply.html?thread=${threadId}&text=${encodeURIComponent(replyText)}`;
             }
         }
     });
