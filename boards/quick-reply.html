@@ -99,13 +99,21 @@
     <script>
         // Получаем ID из URL
         const urlParams = new URLSearchParams(window.location.search);
-        const threadId = urlParams.get('thread') || '#unknown';
-        
+        const threadId = urlParams.get('thread') || 'unknown';
+    
+        console.log('Thread ID from URL:', threadId);
+    
+        // Добавляем решетку к ID
+        const fullThreadId = `#${threadId}`;
+    
         // Заполняем форму
-        document.getElementById('thread-id-display').textContent = threadId;
-        document.getElementById('thread-id-field').value = threadId;
-        document.getElementById('subject-field').value = `ОТВЕТ на тред ${threadId}`;
-        
+        document.getElementById('thread-id-display').textContent = fullThreadId;
+        document.getElementById('thread-id-field').value = fullThreadId;
+        document.getElementById('subject-field').value = `ОТВЕТ на тред ${fullThreadId}`;
+    
+        // Показываем alert для проверки
+        alert(`ID треда: ${fullThreadId}\nЕсли ID неправильный - вернитесь назад`);
+    
         // Фокус на текстовое поле
         document.getElementById('reply-text').focus();
     </script>
