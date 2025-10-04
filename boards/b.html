@@ -9,7 +9,7 @@
     
     <div class="content">
         <!-- Основной тред -->
-        <div class="thread" data-thread-id="1">
+        <div class="thread">
             <h3>▶ Добро пожаловать на /b/ - рандом/беспридел.</h3>
             <p>Территория свободы. 
 Здесь можно всё, что не запрещено законом.
@@ -54,19 +54,6 @@
 
     <!-- ПОДКЛЮЧАЕМ СКРИПТЫ -->
     <script src="../js/header-loader.js"></script>
-    <script src="../js/simple-reply.js"></script>
-    <script>
-        console.log('=== ПРОВЕРКА КНОПОК ===');
-        const buttons = document.querySelectorAll('.reply-btn');
-        console.log('Найдено кнопок:', buttons.length);
-
-        buttons.forEach((btn, i) => {
-        btn.addEventListener('click', function(e) {
-        console.log('Кнопка', i, 'нажата!');
-        e.preventDefault();
-        e.stopPropagation();
-        });
-    });
-</script>
+    <!-- simple-reply.js НЕ НУЖЕН - УБЕРИ ЭТУ СТРОКУ -->
 </body>
 </html>
