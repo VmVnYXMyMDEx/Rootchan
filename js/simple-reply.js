@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // СОЗДАЕМ НЕВИДИМУЮ ФОРМУ ДЛЯ ОТПРАВКИ
                     const hiddenForm = document.createElement('form');
                     hiddenForm.method = 'POST';
-                    hiddenForm.action = 'https://formsubmit.co/ТВОЙ_EMAIL@gmail.com'; // ← ЗАМЕНИ НА СВОЙ
+                    hiddenForm.action = 'https://formsubmit.co/rootchanimageboard@gmail.com'; // ← ЗАМЕНИ НА СВОЙ
                     hiddenForm.style.display = 'none';
                     
                     // Добавляем поля
