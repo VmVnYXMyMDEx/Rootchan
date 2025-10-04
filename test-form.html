@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тест FormSubmit</title>
+</head>
+<body>
+    <h1>Тест отправки формы</h1>
+    
+    <form action="https://formsubmit.co/rootchanimageboard@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="ТЕСТ FormSubmit">
+        <input type="text" name="test_field" placeholder="Введите что-нибудь" required>
+        <button type="submit">Отправить тест</button>
+    </form>
+
+    <script>
+        // Простая отправка через JS
+        setTimeout(() => {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'https://formsubmit.co/rootchanimageboard@gmail.com';
+            form.innerHTML = `
+                <input type="hidden" name="_subject" value="ТЕСТ JavaScript">
+                <input type="hidden" name="test_field" value="Тест из JS">
+            `;
+            document.body.appendChild(form);
+            console.log('Отправляю тестовую форму...');
+            form.submit();
+        }, 3000);
+    </script>
+</body>
+</html>
