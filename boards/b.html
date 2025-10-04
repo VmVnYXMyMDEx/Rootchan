@@ -55,5 +55,18 @@
     <!-- ПОДКЛЮЧАЕМ СКРИПТЫ -->
     <script src="../js/header-loader.js"></script>
     <script src="../js/simple-reply.js"></script>
+    <script>
+        console.log('=== ПРОВЕРКА КНОПОК ===');
+        const buttons = document.querySelectorAll('.reply-btn');
+        console.log('Найдено кнопок:', buttons.length);
+
+        buttons.forEach((btn, i) => {
+        btn.addEventListener('click', function(e) {
+        console.log('Кнопка', i, 'нажата!');
+        e.preventDefault();
+        e.stopPropagation();
+        });
+    });
+</script>
 </body>
 </html>
